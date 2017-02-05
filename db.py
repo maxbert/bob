@@ -12,10 +12,15 @@ d2=csv.DictReader(gObj)
 
 
 for name in d1:
-
     globaldict = {}
-    namer = d1[name]
-    globaldict[name] = namer
-    ider = d1[id]
-    globaldict[id] = ider
+    namer = name['name']
+    globaldict['name'] = namer
+    ider = name['id']
+    globaldict['id'] = ider
+    ager = name['age']
+    globaldict['age'] = ager
+    for code in d2:
+        if code['id'] == name['id']
+            globaldict[d2['code']] = d2['mark']
     students.insert_one(globaldict) 
+             
