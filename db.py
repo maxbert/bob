@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-import csv       #facilitates CSV I/O
+import csv     #facilitates CSV I/O
 server = MongoClient("149.89.150.100")
 db = server['bob']
 students = db['students']
@@ -7,11 +7,10 @@ students = db['students']
 fObj = open("peeps.csv") 
 d1=csv.DictReader(fObj)
 
-gObj = open("courses.csv")
-d2=csv.DictReader(gObj)
-
 
 for name in d1:
+    gObj = open("courses.csv")
+    d2=csv.DictReader(gObj)
     globaldict = {}
     namer = name['name']
     globaldict['name'] = namer
@@ -20,7 +19,10 @@ for name in d1:
     ager = name['age']
     globaldict['age'] = ager
     for code in d2:
-        if code['id'] == name['id']
-            globaldict[d2['code']] = d2['mark']
+        #print name
+        if (code['id'] == ider):
+            key = code['code']
+            globaldict[key] = code['mark']
+    print globaldict
     students.insert_one(globaldict) 
              
