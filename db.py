@@ -41,7 +41,7 @@ def dbteach():
         p = s.bob2.students.find()
         for d in p:
             if code['code'] in d.keys():
-                u.append(code['id'])
+                u.append(d['id'])
         globaldict['students'] = u
 
 def avg(d):
