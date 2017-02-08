@@ -34,17 +34,17 @@ def dbinit():
 def dbteach():
     for code in d3:
         globdict = {}
-         globaldict['teacher'] = code['teacher']
-         globaldict['class'] = code['code']
-         globaldict['period'] = code['period']
-         u = []
-         p = s.bob2.students.find()
-         for d in p:
-             if code['code'] in d.keys():
-                 u.append(code['id'])
-         globaldict['students'] = u
+        globaldict['teacher'] = code['teacher']
+        globaldict['class'] = code['code']
+        globaldict['period'] = code['period']
+        u = []
+        p = s.bob2.students.find()
+        for d in p:
+            if code['code'] in d.keys():
+                u.append(code['id'])
+        globaldict['students'] = u
 
-def avg(dict d):
+def avg(d):
     avg = 0
     count = 0 
     if 'systems' in d.keys():
