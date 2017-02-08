@@ -33,12 +33,12 @@ def dbinit():
 
 def dbteach():
     for code in d3:
-        globdict = {}
+        globaldict = {}
         globaldict['teacher'] = code['teacher']
         globaldict['class'] = code['code']
         globaldict['period'] = code['period']
         u = []
-        p = s.bob2.students.find()
+        p = students.find()
         for d in p:
             if code['code'] in d.keys():
                 u.append(d['id'])
@@ -48,23 +48,25 @@ def avg(d):
     avg = 0
     count = 0 
     if 'systems' in d.keys():
-        avg += d['systems']
+        avg += (int)(d['systems'])
         count += 1
     if 'greatbooks' in d.keys():
-        avg += d['systems']
+        avg += (int)(d['greatbooks'])
         count += 1
         
     if 'ceramics' in d.keys():
-        avg += d['systems']
+        avg += (int)(d['ceramics'])
         count += 1
     if 'softdev' in d.keys():
-        avg += d['systems']
+        avg += (int)(d['softdev'])
         count += 1
     return (avg / count)
 
 def getavgs():
-    p = s.bob2.students.find()
+    p = students.find()
     for d in p:
         print str(d['name']) + ',' + str(d['id']) + ',' + str(avg(d))
 
 
+getavgs()
+dbteach()
