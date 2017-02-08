@@ -3,9 +3,13 @@ import csv     #facilitates CSV I/O
 server = MongoClient("149.89.150.100")
 db = server['bob2']
 students = db['students']
+teachers = db['teachers']
 
 fObj = open("peeps.csv") 
 d1=csv.DictReader(fObj)
+
+tObj = open("teachers.csv") 
+d3=csv.DictReader(tObj)
 
 def dbinit():
     for name in d1:
@@ -25,6 +29,20 @@ def dbinit():
                 globaldict[key] = code['mark']
         print globaldict
         students.insert_one(globaldict) 
+
+
+def dbteach():
+    for code in d3:
+        globdict = {}
+         globaldict['teacher'] = code['teacher']
+         globaldict['class'] = code['code']
+         globaldict['period'] = code['period']
+         u = []
+         p = s.bob2.students.find()
+         for d in p:
+             if code['code'] in d.keys():
+                 u.append(code['id'])
+         globaldict['students'] = u
 
 def avg(dict d):
     avg = 0
@@ -47,4 +65,6 @@ def avg(dict d):
 def getavgs():
     p = s.bob2.students.find()
     for d in p:
-        print avg(d)
+        print str(d['name']) + ',' + str(d['id']) + ',' + str(avg(d))
+
+
